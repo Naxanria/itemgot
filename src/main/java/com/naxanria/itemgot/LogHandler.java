@@ -4,6 +4,7 @@ package com.naxanria.itemgot;
 import com.naxanria.itemgot.config.Config;
 import com.naxanria.itemgot.util.CycleList;
 import com.naxanria.itemgot.util.PlayerUtil;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -40,10 +41,16 @@ public class LogHandler
   
     int tot = PlayerUtil.getTotalForItem(event.player, stack);
     
+    // filter out AIR, we don't care about that.
+    if (stack.getItem() == Items.AIR)
+    {
+      return;
+    }
+    
     String s = stack.getDisplayName() + " +" + stack.getCount() + " (" + tot + ")";
     //String s = event.getItem().getName();
     
-    ItemGotMod.logger.info("Picked up an item! " + s);
+    //ItemGotMod.logger.info("Picked up an item! " + s);
     long now = System.currentTimeMillis();
     
     PickupInfo info = null;
