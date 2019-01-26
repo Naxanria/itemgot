@@ -161,7 +161,7 @@ public class GUIHud extends Gui
       drawRect(x + 2, yp, x + w, yp + h, ColorHelper.fromRGB(bgR, bgG, bgB, (int) ba));
       drawStringRight(fontRenderer, s, x + w , ty, ColorHelper.fromRGB(txtR, txtG, txtB, (int) ta));
       
-      drawString(fontRenderer, debug, x + w + 4, ty, ColorHelper.fromRGB(255, 255, 255));
+      //drawString(fontRenderer, debug, x + w + 4, ty, ColorHelper.fromRGB(255, 255, 255));
     }
   
     RenderHelper.enableStandardItemLighting();
