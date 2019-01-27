@@ -22,6 +22,7 @@ import java.io.*;
   name = ItemGotMod.NAME,
   version = ItemGotMod.VERSION,
   clientSideOnly = true,
+  acceptableRemoteVersions = "*",
   guiFactory = "com.naxanria.itemgot.config.GUIFactory"
 )
 public final class ItemGotMod
