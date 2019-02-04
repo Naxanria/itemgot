@@ -83,14 +83,15 @@ public class GUIHud extends Gui
     long now = System.currentTimeMillis();
     
     boolean drawName = config.isDrawText();
+    boolean drawTotal = config.isDrawTotal();
     int maxNameLength = config.getTextLength();
     
     if (!drawName)
     {
       maxNameLength = 0;
     }
-  
-    w = fontRenderer.getCharWidth('W') * (maxNameLength + 6) + 16;
+    
+    
     
     //drawRect(x, y, x + w, y + h, color);
 //    drawString(fontRenderer, "This is a test", x + 2, y + 6, 0xFFFFFF);
@@ -106,7 +107,7 @@ public class GUIHud extends Gui
         continue;
       }
       
-      String debug = "";
+     // String debug = "";
       
       float ba = bgA;
       float ta = txtA;
@@ -122,7 +123,7 @@ public class GUIHud extends Gui
         ba *= perc;
         ta *= perc;
   
-        debug = debug + " perc: " + perc + " ba: " + ba + " ta: " + ta;
+        //debug = debug + " perc: " + perc + " ba: " + ba + " ta: " + ta;
   
         if (ba < 30f || ta < 30f)
         {
@@ -140,7 +141,17 @@ public class GUIHud extends Gui
       renderItem.renderItemAndEffectIntoGUI(stack, x + 2, yp + 2);
       renderItem.renderItemOverlayIntoGUI(fontRenderer, stack, x + 2, yp, info.getCount() > 1 ? String.valueOf(info.getCount()) : "");
       
-      String tot = "(" + info.getTotal() + ") ";// + ((now - info.getTime()) / 1000);
+      String tot;
+      
+      if (drawTotal)
+      {
+        tot = "(" + info.getTotal() + ") ";// + ((now - info.getTime()) / 1000);
+      }
+      else
+      {
+        tot = "";
+      }
+      
       String name;
       
       if (drawName)
@@ -157,6 +168,8 @@ public class GUIHud extends Gui
       }
       
       String s = name + " " + tot;
+  
+      w = fontRenderer.getCharWidth('W') * (maxNameLength + tot.length()) + 16;
       
       drawRect(x + 2, yp, x + w, yp + h, ColorHelper.fromRGB(bgR, bgG, bgB, (int) ba));
       drawStringRight(fontRenderer, s, x + w , ty, ColorHelper.fromRGB(txtR, txtG, txtB, (int) ta));
@@ -169,7 +182,7 @@ public class GUIHud extends Gui
   
   private void drawStringRight(FontRenderer fontRenderer, String text, int right, int y, int color)
   {
-    int w = fontRenderer.getStringWidth(text);
+    int w = fontRenderer.getStringWidth(text) + 6;
     int x = right - w;
     GlStateManager.disableLighting();
     GlStateManager.disableDepth();

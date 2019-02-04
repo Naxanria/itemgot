@@ -30,6 +30,9 @@ public class Config
   @Category(name = "text")
   private boolean drawText;
   
+  @Category(name =  "text")
+  private boolean drawTotal;
+  
   @Category(name = "text")
   @ShowOnly(field = "drawText")
   @Range(min = 2, max = 20)
@@ -68,6 +71,7 @@ public class Config
     y = 10;
     logSize = 8;
     drawText = true;
+    drawTotal = true;
     textLength = 20;
 
     textRed = 255;
@@ -84,7 +88,7 @@ public class Config
     fadeDelay = 5;
   }
   
-  public Config(int x, int y, int updateFrequency, int logSize, int textRed, int textGreen, int textBlue, int bgRed, int bgGreen, int bgBlue, int bgAlpha, boolean drawText, int textLength, int refreshTime, int fadeTime, int fadeDelay)
+  public Config(int x, int y, int updateFrequency, int logSize, int textRed, int textGreen, int textBlue, int bgRed, int bgGreen, int bgBlue, int bgAlpha, boolean drawText, boolean drawTotal, int textLength, int refreshTime, int fadeTime, int fadeDelay)
   {
     this.x = x;
     this.y = y;
@@ -98,6 +102,7 @@ public class Config
     this.bgBlue = bgBlue;
     this.bgAlpha = bgAlpha;
     this.drawText = drawText;
+    this.drawTotal = drawTotal;
     this.textLength = textLength;
     this.refreshTime = refreshTime;
     this.fadeTime = fadeTime;
@@ -127,6 +132,11 @@ public class Config
   public boolean isDrawText()
   {
     return drawText;
+  }
+  
+  public boolean isDrawTotal()
+  {
+    return drawTotal;
   }
   
   public int getTextLength()
