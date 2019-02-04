@@ -4,7 +4,9 @@ package com.naxanria.itemgot;
 import com.naxanria.itemgot.config.Config;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -37,20 +39,28 @@ public final class ItemGotMod
   public static final Logger logger = LogManager.getLogger(MODID);
   
   public File configFile;
+  private LogHandler handler;
   
   @Mod.EventHandler
   public void preInit(FMLPreInitializationEvent event)
   {
-    LogHandler handler = new LogHandler();
+    handler = new LogHandler();
+  
+    MinecraftForge.EVENT_BUS.register(new EventHandler());
     MinecraftForge.EVENT_BUS.register(new GUIHud(Minecraft.getMinecraft(), handler));
-    MinecraftForge.EVENT_BUS.register(handler);
+    
+    //MinecraftForge.EVENT_BUS.register(handler);
+    //ForgeEventFactory.onItemPickup()
+    
+    //FMLCommonHandler.instance().bus().register(handler);
+    
     
     configFile = new File(event.getSuggestedConfigurationFile().getParent(), MODID + "/" + MODID + ".cfg");
   
     Config.loadConfig(configFile);
     saveConfig();
     
-    MinecraftForge.EVENT_BUS.register(new EventHandler());
+    
     
     Config cfg = Config.getInstance();
     
@@ -72,5 +82,10 @@ public final class ItemGotMod
   public void saveConfig()
   {
     Config.saveConfig(configFile);
+  }
+  
+  public LogHandler getHandler()
+  {
+    return handler;
   }
 }

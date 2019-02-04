@@ -3,6 +3,7 @@ package com.naxanria.itemgot;
 
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventHandler
 {
@@ -16,5 +17,11 @@ public class EventHandler
       
       ItemGotMod.instance.saveConfig();
     }
+  }
+  
+  @SubscribeEvent
+  public void onClientTick(TickEvent.ClientTickEvent event)
+  {
+    ItemGotMod.instance.getHandler().onTickEvent(event);
   }
 }

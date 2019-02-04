@@ -1,5 +1,7 @@
 package com.naxanria.itemgot.util;
 
+import com.naxanria.itemgot.ItemGotMod;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
@@ -22,5 +24,17 @@ public class PlayerUtil
     }
     
     return total;
+  }
+  
+  public static EntityPlayer getLocalPlayer()
+  {
+    return Minecraft.getMinecraft().player;
+  }
+  
+  public static boolean arePlayersSame(EntityPlayer player1, EntityPlayer player2)
+  {
+    int i = player1.getUniqueID().compareTo(player2.getUniqueID());
+    ItemGotMod.logger.info("<> " + i);
+    return i == 0;
   }
 }

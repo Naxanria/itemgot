@@ -24,6 +24,9 @@ public class Config
   @Range(min = 2, max = 20)
   private int logSize;
   
+  @Range(min = 1, max = 40)
+  private int updateFrequency = 10;
+  
   @Category(name = "text")
   private boolean drawText;
   
@@ -59,6 +62,8 @@ public class Config
   
   public Config()
   {
+    updateFrequency = 10;
+    
     x = 10;
     y = 10;
     logSize = 8;
@@ -79,10 +84,11 @@ public class Config
     fadeDelay = 5;
   }
   
-  public Config(int x, int y, int logSize, int textRed, int textGreen, int textBlue, int bgRed, int bgGreen, int bgBlue, int bgAlpha, boolean drawText, int textLength, int refreshTime, int fadeTime, int fadeDelay)
+  public Config(int x, int y, int updateFrequency, int logSize, int textRed, int textGreen, int textBlue, int bgRed, int bgGreen, int bgBlue, int bgAlpha, boolean drawText, int textLength, int refreshTime, int fadeTime, int fadeDelay)
   {
     this.x = x;
     this.y = y;
+    this.updateFrequency = updateFrequency;
     this.logSize = logSize;
     this.textRed = textRed;
     this.textGreen = textGreen;
@@ -106,6 +112,11 @@ public class Config
   public int getY()
   {
     return y;
+  }
+  
+  public int getUpdateFrequency()
+  {
+    return updateFrequency;
   }
   
   public int getLogSize()
