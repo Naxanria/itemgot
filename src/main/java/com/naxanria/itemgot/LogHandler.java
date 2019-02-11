@@ -2,10 +2,7 @@ package com.naxanria.itemgot;
 
 
 import com.naxanria.itemgot.config.Config;
-import com.naxanria.itemgot.util.CycleList;
-import com.naxanria.itemgot.util.MathUtil;
-import com.naxanria.itemgot.util.PlayerUtil;
-import com.naxanria.itemgot.util.StackTally;
+import com.naxanria.itemgot.util.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -69,7 +66,7 @@ public class LogHandler
     for (PickupInfo pi :
       list)
     {
-      if (pi.getStack().isItemEqual(stack) && now - pi.getTime()  <= updateTime)
+      if (StackUtil.itemsSame(pi.getStack(), stack) /*pi.getStack().isItemEqual(stack)*/ && now - pi.getTime()  <= updateTime)
       {
         info = pi;
         break;
@@ -134,7 +131,7 @@ public class LogHandler
     {
       return;
     }
-    ItemGotMod.logger.info("Here we should check for items...");
+//    ItemGotMod.logger.info("Here we should check for items...");
     
     if (inventory == null)
     {
@@ -149,7 +146,7 @@ public class LogHandler
     
     StackTally tally = tally(current);
   
-    ItemGotMod.logger.info(tally.getStacks().size() + "");
+//    ItemGotMod.logger.info(tally.getStacks().size() + "");
     
     StackTally diff = tally.difference(currentTally);
 
@@ -159,7 +156,7 @@ public class LogHandler
       if (s.getCount() > 0)
       {
         pickup(s);
-        ItemGotMod.logger.info("Picked up items...");
+        //ItemGotMod.logger.info("Picked up items...");
       }
     }
     
@@ -176,12 +173,12 @@ public class LogHandler
       tally.add(s);
     }
     
-    ItemGotMod.logger.info("== Tally ==");
-    for (ItemStack s :
-      tally.getStacks())
-    {
-      ItemGotMod.logger.info("    " + s.getUnlocalizedName() + " " + s.getCount());
-    }
+//    ItemGotMod.logger.info("== Tally ==");
+//    for (ItemStack s :
+//      tally.getStacks())
+//    {
+//      ItemGotMod.logger.info("    " + s.getUnlocalizedName() + " " + s.getCount());
+//    }
     
     return tally;
   }
