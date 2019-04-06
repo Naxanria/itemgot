@@ -1,6 +1,6 @@
 [{
   "modid": "itemgot",
-  "version": "0.1b",
+  "version": "${version}",
   "name": "Item Got",
   "description": "Shows a log of items gotten.",
   "authorList" : ["Naxanria"]

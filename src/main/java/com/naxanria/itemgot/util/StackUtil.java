@@ -1,5 +1,6 @@
 package com.naxanria.itemgot.util;
 
+import com.naxanria.itemgot.ItemGotMod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
@@ -14,15 +15,21 @@ public class StackUtil
     }
     
     // todo: NBT stuff etc.
-    
-    Item item = a.getItem();
-    
-    if (item instanceof ItemTool)
+    if (a.getItem() == b.getItem())
     {
-      // dont check the damage?
-      return item == b.getItem();
+      if (a.getItem() instanceof ItemTool)
+      {
+        return true;
+      }
+      
+      if (a.getDisplayName().equals(b.getDisplayName()))
+      {
+        return true;
+      }
+  
+      return a.getMetadata() == b.getMetadata();
     }
     
-    return  a.isItemEqual(b);
+    return false;
   }
 }

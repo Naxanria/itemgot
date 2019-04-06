@@ -42,13 +42,11 @@ public class LogHandler
       localPlayer = PlayerUtil.getLocalPlayer();
     }
   
-    ItemGotMod.logger.info("All went well...");
-  
     int tot = 0;
   
     if (currentTally != null)
     {
-      tot = currentTally.getCount(stack) + stack.getCount(); //PlayerUtil.getTotalForItem(localPlayer, stack);
+      tot = currentTally.getCount(stack) + stack.getCount();
     }
     
     // filter out AIR, we don't care about that.
@@ -57,12 +55,10 @@ public class LogHandler
       return;
     }
     
-//    String s = stack.getDisplayName() + " +" + stack.getCount() + " (" + tot + ")";
-    
     long now = System.currentTimeMillis();
     
     PickupInfo info = null;
-    // see if we can update an older one?
+    
     for (PickupInfo pi :
       list)
     {
@@ -131,7 +127,6 @@ public class LogHandler
     {
       return;
     }
-//    ItemGotMod.logger.info("Here we should check for items...");
     
     if (inventory == null)
     {
@@ -145,8 +140,6 @@ public class LogHandler
     List<ItemStack> current = player.inventory.mainInventory;
     
     StackTally tally = tally(current);
-  
-//    ItemGotMod.logger.info(tally.getStacks().size() + "");
     
     StackTally diff = tally.difference(currentTally);
 
@@ -156,7 +149,6 @@ public class LogHandler
       if (s.getCount() > 0)
       {
         pickup(s);
-        //ItemGotMod.logger.info("Picked up items...");
       }
     }
     
@@ -172,13 +164,6 @@ public class LogHandler
     {
       tally.add(s);
     }
-    
-//    ItemGotMod.logger.info("== Tally ==");
-//    for (ItemStack s :
-//      tally.getStacks())
-//    {
-//      ItemGotMod.logger.info("    " + s.getUnlocalizedName() + " " + s.getCount());
-//    }
     
     return tally;
   }

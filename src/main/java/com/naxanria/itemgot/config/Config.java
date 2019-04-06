@@ -70,9 +70,9 @@ public class Config
     x = 10;
     y = 10;
     logSize = 8;
-    drawText = true;
+    drawText = false;
     drawTotal = true;
-    textLength = 20;
+    textLength = 10;
 
     textRed = 255;
     textGreen = 255;
@@ -81,7 +81,7 @@ public class Config
     bgRed = 0;
     bgGreen = 0;
     bgBlue = 0;
-    bgAlpha = 90;
+    bgAlpha = 0;
     
     refreshTime = 5;
     fadeTime = 10;
