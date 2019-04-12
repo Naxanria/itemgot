@@ -1,9 +1,9 @@
 package com.naxanria.itemgot.util;
 
-import com.naxanria.itemgot.ItemGotMod;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 
 public class StackUtil
 {
@@ -13,8 +13,7 @@ public class StackUtil
     {
       return false;
     }
-    
-    // todo: NBT stuff etc.
+
     if (a.getItem() == b.getItem())
     {
       if (a.getItem() instanceof ItemTool)
@@ -27,7 +26,17 @@ public class StackUtil
         return true;
       }
   
-      return a.getMetadata() == b.getMetadata();
+      if (a.getMetadata() == b.getMetadata())
+      {
+        // check nbt here
+        NBTTagCompound compoundA = a.writeToNBT(new NBTTagCompound());
+        NBTTagCompound compoundB = b.writeToNBT(new NBTTagCompound());
+        
+        if (compoundA.getSize() == compoundB.getSize())
+        {
+          return NBTUtil.areNBTEquals(compoundA, compoundB, true);
+        }
+      }
     }
     
     return false;
