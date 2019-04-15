@@ -24,8 +24,6 @@ public class LogHandler
   private int updateCheck = 20;
   private int ticks = 0;
   
-  private List<ItemStack> inventory;
-  
   private List<PickupInfo> infoCache = new ArrayList<>();
   
   private Comparator<PickupInfo> sorter = Comparator.comparingLong(PickupInfo::getTime);
@@ -127,19 +125,16 @@ public class LogHandler
     {
       return;
     }
-    
-    if (inventory == null)
-    {
-      updateInventory(player);
-      
-      currentTally = tally(inventory);
-      
-      return;
-    }
-    
+
     List<ItemStack> current = player.inventory.mainInventory;
     
     StackTally tally = tally(current);
+    
+    if (currentTally == null)
+    {
+      currentTally = tally;
+      return;
+    }
     
     StackTally diff = tally.difference(currentTally);
 
@@ -166,10 +161,5 @@ public class LogHandler
     }
     
     return tally;
-  }
-  
-  private void updateInventory(EntityPlayer player)
-  {
-    inventory = new ArrayList<>(player.inventory.mainInventory);
   }
 }
