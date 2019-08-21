@@ -1,8 +1,11 @@
 package com.naxanria.itemgot;
 
 
-import com.naxanria.itemgot.config.Config;
-import com.naxanria.itemgot.util.*;
+import com.naxanria.itemgot.config.ItemGotConfig;
+import com.naxanria.itemgot.util.CycleList;
+import com.naxanria.itemgot.util.PlayerUtil;
+import com.naxanria.itemgot.util.StackTally;
+import com.naxanria.itemgot.util.StackUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -102,21 +105,21 @@ public class LogHandler
       return;
     }
   
-    Config config = Config.getInstance();
+  
 
-    if (config.getLogSize() != list.getMaxSize())
+    if (ItemGotConfig.logSize != list.getMaxSize())
     {
-      list.resize(config.getLogSize());
+      list.resize(ItemGotConfig.logSize);
     }
   
-    if (config.getRefreshTime() * 1000 != updateTime)
+    if (ItemGotConfig.refreshTime * 1000 != updateTime)
     {
-      updateTime = config.getRefreshTime() * 1000;
+      updateTime = ItemGotConfig.refreshTime * 1000;
     }
     
-    if (config.getUpdateFrequency() != updateCheck)
+    if (ItemGotConfig.updateFrequency != updateCheck)
     {
-      updateCheck = MathUtil.clamp(config.getUpdateFrequency(), 1, 40);
+      updateCheck = ItemGotConfig.updateFrequency;
     }
     
     if (++ticks % updateCheck != 0)

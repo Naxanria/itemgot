@@ -1,11 +1,11 @@
 //package com.naxanria.itemgot.config;
 //
 //import com.naxanria.itemgot.ItemGotMod;
-//import com.naxanria.itemgot.config.annotation.Category;
-//import net.minecraft.client.gui.GuiScreen;
-//import net.minecraftforge.fml.client.config.GuiConfig;
-//import net.minecraftforge.fml.client.config.GuiConfigEntries;
-//import net.minecraftforge.fml.client.config.IConfigElement;
+//import com.naxanria.itemgot.clientConfig.annotation.Category;
+//import net.minecraft.clientConfig.gui.GuiScreen;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiConfig;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiConfigEntries;
+//import net.minecraftforge.fml.clientConfig.clientConfig.IConfigElement;
 //
 //import java.lang.reflect.Field;
 //import java.lang.reflect.Modifier;

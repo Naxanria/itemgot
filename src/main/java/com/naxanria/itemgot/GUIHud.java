@@ -1,7 +1,7 @@
 package com.naxanria.itemgot;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.naxanria.itemgot.config.Config;
+import com.naxanria.itemgot.config.ItemGotConfig;
 import com.naxanria.itemgot.util.ColorHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
@@ -10,8 +10,6 @@ import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = ItemGotMod.MODID)
@@ -54,10 +52,8 @@ public class GUIHud extends AbstractGui
       renderItem = MC.getItemRenderer();
     }
     
-    Config config = Config.getInstance();
-    
-    int x = config.getX();
-    int y = config.getY();
+    int x = ItemGotConfig.x;
+    int y = ItemGotConfig.y;
     int w;
     
     int textSpacing = 2;
@@ -68,25 +64,30 @@ public class GUIHud extends AbstractGui
     {
       h = 16;
     }
+//
+//    int bgA = config.getBgAlpha();
+//    int bgR = config.getBgRed();
+//    int bgG = config.getBgGreen();
+//    int bgB = config.getBgBlue();
+//
+//    int txtA = 255;
+//    int txtR = config.getTextRed();
+//    int txtG = config.getTextGreen();
+//    int txtB = config.getTextBlue();
     
-    int bgA = config.getBgAlpha();
-    int bgR = config.getBgRed();
-    int bgG = config.getBgGreen();
-    int bgB = config.getBgBlue();
+    int backgroundColor = ItemGotConfig.backgroundColor;
+    int textColor = ItemGotConfig.textColor;
     
-    int txtA = 255;
-    int txtR = config.getTextRed();
-    int txtG = config.getTextGreen();
-    int txtB = config.getTextBlue();
-    
-    long fullTime = config.getFadeDelay() * 1000;
-    long fadeTime = config.getFadeTime() * 1000;
+    long fullTime = ItemGotConfig.fadeDelay * 1000;
+    long fadeTime = ItemGotConfig.fadeTime * 1000;
     
     long now = System.currentTimeMillis();
     
-    boolean drawName = config.isDrawText();
-    boolean drawTotal = config.isDrawTotal();
-    int maxNameLength = config.getTextLength();
+    boolean drawName = ItemGotConfig.drawText;
+    boolean drawTotal = ItemGotConfig.drawTotal;
+    int maxNameLength = ItemGotConfig.textLength;
+    
+    
     
     if (!drawName)
     {
@@ -111,8 +112,10 @@ public class GUIHud extends AbstractGui
       
      // String debug = "";
       
-      float ba = bgA;
-      float ta = txtA;
+      
+      
+      float ba = ColorHelper.getAlpha(backgroundColor);// / 255.0f;
+      float ta = ColorHelper.getAlpha(textColor);// / 255.0f;
       
       if (diff > fullTime)
       {
@@ -173,8 +176,8 @@ public class GUIHud extends AbstractGui
   
       w =(int) (fontRenderer.getCharWidth('W') * (maxNameLength + tot.length()) + 16);
       
-      fill(x + 2, yp, x + w, yp + h, ColorHelper.fromRGB(bgR, bgG, bgB, (int) ba));
-      drawStringRight(fontRenderer, s, x + w , ty, ColorHelper.fromRGB(txtR, txtG, txtB, (int) ta));
+      fill(x + 2, yp, x + w, yp + h, ColorHelper.withAlpha(backgroundColor, (int) ba));
+      drawStringRight(fontRenderer, s, x + w , ty, ColorHelper.withAlpha(textColor, (int) ta));
       
       //drawString(fontRenderer, debug, x + w + 4, ty, ColorHelper.fromRGB(255, 255, 255));
     }

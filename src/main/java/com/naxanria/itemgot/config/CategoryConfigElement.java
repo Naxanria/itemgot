@@ -1,9 +1,9 @@
 //package com.naxanria.itemgot.config;
 //
-//import net.minecraftforge.fml.client.config.ConfigGuiType;
-//import net.minecraftforge.fml.client.config.GuiConfigEntries;
-//import net.minecraftforge.fml.client.config.GuiEditArrayEntries;
-//import net.minecraftforge.fml.client.config.IConfigElement;
+//import net.minecraftforge.fml.clientConfig.clientConfig.ConfigGuiType;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiConfigEntries;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiEditArrayEntries;
+//import net.minecraftforge.fml.clientConfig.clientConfig.IConfigElement;
 //
 //import java.util.List;
 //import java.util.regex.Pattern;

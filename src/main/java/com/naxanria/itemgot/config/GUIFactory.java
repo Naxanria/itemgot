@@ -1,8 +1,8 @@
 //package com.naxanria.itemgot.config;
 //
-//import net.minecraft.client.Minecraft;
-//import net.minecraft.client.gui.GuiScreen;
-//import net.minecraftforge.fml.client.IModGuiFactory;
+//import net.minecraft.clientConfig.Minecraft;
+//import net.minecraft.clientConfig.gui.GuiScreen;
+//import net.minecraftforge.fml.clientConfig.IModGuiFactory;
 //
 //import java.util.Set;
 //

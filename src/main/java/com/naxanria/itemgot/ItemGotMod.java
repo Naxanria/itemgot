@@ -1,10 +1,11 @@
 package com.naxanria.itemgot;
 
 
-import com.naxanria.itemgot.config.Config;
+import com.naxanria.itemgot.config.ItemGotConfig;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -21,7 +22,7 @@ import java.io.File;
 //  version = ItemGotMod.VERSION,
 //  clientSideOnly = true,
 //  acceptableRemoteVersions = "*",
-//  guiFactory = "com.naxanria.itemgot.config.GUIFactory"
+//  guiFactory = "com.naxanria.itemgot.clientConfig.GUIFactory"
 )
 public final class ItemGotMod
 {
@@ -47,9 +48,7 @@ public final class ItemGotMod
       {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::clientInit);
-        
-        logger.info("Loading on client");
-        // todo: register config here
+        ItemGotConfig.register(ModLoadingContext.get());
       }
     );
   }

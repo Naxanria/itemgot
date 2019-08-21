@@ -1,11 +1,11 @@
 //package com.naxanria.itemgot.config;
 //
-//import com.naxanria.itemgot.config.annotation.Range;
-//import com.naxanria.itemgot.config.annotation.ShowOnly;
-//import net.minecraftforge.fml.client.config.ConfigGuiType;
-//import net.minecraftforge.fml.client.config.GuiConfigEntries;
-//import net.minecraftforge.fml.client.config.GuiEditArrayEntries;
-//import net.minecraftforge.fml.client.config.IConfigElement;
+//import com.naxanria.itemgot.clientConfig.annotation.Range;
+//import com.naxanria.itemgot.clientConfig.annotation.ShowOnly;
+//import net.minecraftforge.fml.clientConfig.clientConfig.ConfigGuiType;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiConfigEntries;
+//import net.minecraftforge.fml.clientConfig.clientConfig.GuiEditArrayEntries;
+//import net.minecraftforge.fml.clientConfig.clientConfig.IConfigElement;
 //
 //import java.lang.reflect.Field;
 //import java.util.HashMap;
@@ -40,7 +40,7 @@
 //    return BASE_KEY + baseName;
 //  }
 //
-//  private static final String BASE_KEY = MODID + ".config.";
+//  private static final String BASE_KEY = MODID + ".clientConfig.";
 //
 //  private final Field field;
 //  private final Object defValue;

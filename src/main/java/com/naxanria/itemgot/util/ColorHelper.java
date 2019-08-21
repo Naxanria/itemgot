@@ -22,6 +22,12 @@ public class ColorHelper
     return fromRGB((int) (r * 255), (int) (g * 255), (int) (b * 255), (int) (a * 255));
   }
   
+  public static int withAlpha(int color, int alpha)
+  {
+    int[] cols = getARGB(color);
+    return fromRGB(cols[1], cols[2], cols[3], alpha);
+  }
+  
   public static int getRed(int color)
   {
     return (color >> 16) & 0xFF;
