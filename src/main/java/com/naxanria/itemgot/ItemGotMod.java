@@ -2,6 +2,7 @@ package com.naxanria.itemgot;
 
 
 import com.naxanria.itemgot.config.ItemGotConfig;
+import com.naxanria.itemgot.event.EventHandler;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -56,6 +57,8 @@ public final class ItemGotMod
   private void clientInit(final FMLClientSetupEvent event)
   {
     handler = new LogHandler();
+  
+    EventHandler.createKeyBinds();
   }
   
   

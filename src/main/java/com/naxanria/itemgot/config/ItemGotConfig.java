@@ -34,7 +34,7 @@ public class ItemGotConfig
     clientConfigSpec = specPair.getRight();
     clientConfig = specPair.getLeft();
   }
-  
+
   private static String key(String key)
   {
     return "itemgot.clientConfig." + key;
@@ -75,6 +75,11 @@ public class ItemGotConfig
     refreshTime = clientConfig.refreshTime.get();
     fadeTime = clientConfig.fadeTime.get();
     fadeDelay = clientConfig.fadeDelay.get();
+  }
+  
+  public static ForgeConfigSpec getClientSpec()
+  {
+    return clientConfigSpec;
   }
   
   public static class Client

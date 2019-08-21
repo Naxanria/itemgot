@@ -1,0 +1,19 @@
+{
+  "itemgot.gui.save": "Save",
+  "itemgot.gui.cancel": "Cancel",
+
+  "itemgot.clientConfig.position_x": "X",
+  "itemgot.clientConfig.position_y": "Y",
+  "itemgot.clientConfig.update_frequency": "Update Frequency",
+  "itemgot.clientConfig.log_size": "Log Size",
+
+  "itemgot.clientConfig.refresh_time": "Refresh Time",
+  "itemgot.clientConfig.fade_time": "Fade Time",
+  "itemgot.clientConfig.fade_delay": "Fade delay",
+
+  "itemgot.clientConfig.text_length": "Text Length",
+  "itemgot.clientConfig.drawText": "Draw Text",
+  "itemgot.clientConfig.draw_total": "Draw Total",
+  "itemgot.clientConfig.text_color": "Text Color",
+  "itemgot.clientConfig.background_color": "Background Color"
+}
