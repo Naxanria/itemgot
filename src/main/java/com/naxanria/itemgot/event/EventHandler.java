@@ -13,8 +13,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = ItemGotMod.MODID)
@@ -22,11 +23,13 @@ public class EventHandler
 {
   public static final String KEY_BIND_CATEGORY = "itemgot";
   
+  // fixme: no more @SubscribeEvent
   @SubscribeEvent
-  public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
+  public static void onConfigChanged(ModConfig.Reloading event)
   {
-    if (event.getModID().equals(ItemGotMod.MODID))
+    if (event.getConfig().getModId().equals(ItemGotMod.MODID))
     {
+      // todo: reload?
 //      ItemGotMod.instance.saveConfig();
     }
   }

@@ -39,8 +39,8 @@ public class ScreenBase extends Screen
   {
     this.mouseX = mouseX;
     this.mouseY = mouseY;
-    windowWidth = minecraft.mainWindow.getScaledWidth();
-    windowHeight = minecraft.mainWindow.getScaledHeight();
+    windowWidth = minecraft.getMainWindow().getScaledWidth();
+    windowHeight = minecraft.getMainWindow().getScaledHeight();
     
     renderPre();
     

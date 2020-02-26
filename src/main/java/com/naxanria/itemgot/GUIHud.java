@@ -98,8 +98,8 @@ public class GUIHud extends AbstractGui
     
     //drawRect(x, y, x + w, y + h, color);
 //    drawString(fontRenderer, "This is a test", x + 2, y + 6, 0xFFFFFF);
-    RenderHelper.disableStandardItemLighting();
-    RenderHelper.enableGUIStandardItemLighting();
+//    RenderHelper.disableStandardItemLighting();
+//    RenderHelper.enableStandardItemLighting();
     
     for (PickupInfo info:
          handler.getList())
@@ -182,7 +182,7 @@ public class GUIHud extends AbstractGui
       //drawString(fontRenderer, debug, x + w + 4, ty, ColorHelper.fromRGB(255, 255, 255));
     }
   
-    RenderHelper.enableStandardItemLighting();
+//    RenderHelper.enableStandardItemLighting();
   }
   
   private void drawStringRight(FontRenderer fontRenderer, String text, int right, int y, int color)
@@ -190,13 +190,13 @@ public class GUIHud extends AbstractGui
     int w = fontRenderer.getStringWidth(text) + 6;
     int x = right - w;
     
-    GlStateManager.disableLighting();
-    GlStateManager.disableDepthTest();
-    GlStateManager.disableBlend();
+//    GlStateManager.disableLighting();
+//    GlStateManager.disableDepthTest();
+//    GlStateManager.disableBlend();
     drawString(fontRenderer, text, x, y, color);
-    GlStateManager.enableLighting();
-    GlStateManager.enableDepthTest();
-    GlStateManager.enableBlend();
+//    GlStateManager.enableLighting();
+//    GlStateManager.enableDepthTest();
+//    GlStateManager.enableBlend();
   }
   
 //  private int getColor(float r, float g, float b)
